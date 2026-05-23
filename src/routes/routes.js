@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import authMiddleware from '../middleware/auth.js';
 
-import homeController from "../controller/homeController.js";
+import homeController from "../controller/HomeController.js";
 import registerController from "../controller/RegisterController.js"
 import loginController from "../controller/LoginController.js"
 import SendMensageController from "../controller/SendMensageController.js";
