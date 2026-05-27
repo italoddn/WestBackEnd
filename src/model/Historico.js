@@ -1,19 +1,22 @@
 import mongoose from "mongoose";
 
-const filaSchema = new mongoose.Schema({
+const historicoSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
     },
+
     accents: {
         type: Number,
         required: true
     },
-    phoneNumber: String
+    phoneNumber: String,
+    stats: String,
+
 }, {
     timestamps: true
 });
 
-const Fila = mongoose.model('Fila', filaSchema);
+const Historico = mongoose.model('Historico', historicoSchema);
 
-export default Fila;
+export default Historico;

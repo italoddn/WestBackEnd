@@ -1,4 +1,7 @@
 import Fila from '../model/Fila.js'
+import Historico from '../model/Historico.js';
+
+
 class HomeController {
 
     async index(req, res) {
