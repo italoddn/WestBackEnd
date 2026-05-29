@@ -5,7 +5,7 @@ import { connectToWhatsApp } from './src/services/whatssapService.js';
 async function connectServer() {
     try {
         await connectDatabase();
-        await connectToWhatsApp();
+        // await connectToWhatsApp();
         app.listen(3000, () => console.log('✅ Server ON'));
     } catch (e) {
         console.log(e);

@@ -7,6 +7,7 @@ import registerController from "../controller/RegisterController.js"
 import loginController from "../controller/LoginController.js"
 import SendMensageController from "../controller/SendMensageController.js";
 import HistoryController from '../controller/HistoryController.js';
+import MetaController from '../controller/MetaController.js';
 
 
 const router = Router();
@@ -28,6 +29,10 @@ router.post('/send-mensage/:id', authMiddleware, SendMensageController.store)
 //Historico routes
 router.get('/history', authMiddleware, HistoryController.index);
 router.post('/history', authMiddleware, HistoryController.store);
+
+//metaRoutes
+
+router.get('/mensage/webhook', MetaController.index);
 
 
 
