@@ -26,13 +26,24 @@ class SendMenssageController {
 
             const {data} = await axios.post(urlFinal, {
                 "messaging_product": "whatsapp",
-                "to": `5531987037748`,
+                "to": `55${numberReformed}`,
                 "type": "template",
                 "template": {
-                    "name": "hello_world",
+                    "name": "west_fila_autorizado",
                     "language": {
-                        "code": "en_US"
-                    }
+                        "code": "pt_BR"
+                    },
+                    "components": [
+                        {
+                            "type": "body",
+                            "parameters": [
+                                {
+                                    "type": "text",
+                                    "text": custumer.name
+                                }
+                            ]
+                        }
+                    ]
                 }
             },config)
 
