@@ -26,7 +26,7 @@ class SendMenssageController {
 
             const {data} = await axios.post(urlFinal, {
                 "messaging_product": "whatsapp",
-                "to": `5531987037748`,
+                "to": `553187037748`,
                 "type": "template",
                 "template": {
                     "name": "hello_world",
