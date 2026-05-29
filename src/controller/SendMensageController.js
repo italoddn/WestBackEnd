@@ -24,7 +24,7 @@ class SendMenssageController {
 
             // await sendWhatsAppMessage(`55${numberReformed}`,`Olá ${custumer.name}, Ótima noticia!! \nTemos uma mesa disponivel para você🥳\n\nCorra🏃‍♂️💨 aguardaremos apenas 5 minutos para que reinvidique sua mesa, se indentifique para o garçom responsável pela fila e prepare o estômago para uma deliciosa refeição!🍔🍟`);
 
-            const {data} = await axios.post(urlFinal, {
+            const { data } = await axios.post(urlFinal, {
                 "messaging_product": "whatsapp",
                 "to": `55${numberReformed}`,
                 "type": "template",
@@ -45,12 +45,19 @@ class SendMenssageController {
                         }
                     ]
                 }
-            },config)
+            }, config)
 
             console.log(data)
             return res.status(200).json({ message: 'Menssagem enviada!' });
         } catch (e) {
-            console.log(e);
+            if (e.response) {
+                // Isso vai quebrar o [Object] e mostrar a mensagem real em texto no terminal
+                console.log("=== ERRO DETALHADO DA META ===");
+                console.log(JSON.stringify(e.response.data, null, 2));
+            } else {
+                console.log("Erro geral:", e.message);
+            }
+            return res.status(500).json({ error: 'Erro ao enviar' });
         }
     }
 }
