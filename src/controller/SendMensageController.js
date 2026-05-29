@@ -24,7 +24,7 @@ class SendMenssageController {
 
             // await sendWhatsAppMessage(`55${numberReformed}`,`Olá ${custumer.name}, Ótima noticia!! \nTemos uma mesa disponivel para você🥳\n\nCorra🏃‍♂️💨 aguardaremos apenas 5 minutos para que reinvidique sua mesa, se indentifique para o garçom responsável pela fila e prepare o estômago para uma deliciosa refeição!🍔🍟`);
 
-            await axios.post(urlFinal, {
+            const {data} = await axios.post(urlFinal, {
                 "messaging_product": "whatsapp",
                 "to": `5531987037748`,
                 "type": "template",
@@ -36,7 +36,7 @@ class SendMenssageController {
                 }
             },config)
 
-
+            console.log(data)
             return res.status(200).json({ message: 'Menssagem enviada!' });
         } catch (e) {
             console.log(e);
