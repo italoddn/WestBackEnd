@@ -13,6 +13,10 @@ const historicoSchema = new mongoose.Schema({
     phoneNumber: String,
     stats: String,
 
+    timeInLine: {
+        type: String,
+    }
+
 }, {
     timestamps: true
 });
