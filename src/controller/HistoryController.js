@@ -15,14 +15,15 @@ class HistoryControler {
   }
 
   async store(req, res) {
-    const {name, accents, phoneNumber, stats} = req.body;
+    const {name, accents, phoneNumber, stats, timeInLine} = req.body;
 
     try {
       const response = await Historico.create({
         name,
         accents,
         phoneNumber,
-        stats
+        stats,
+        timeInLine 
       });
 
       return res.status(200).json(response);
