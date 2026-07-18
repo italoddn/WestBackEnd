@@ -31,6 +31,16 @@ class HistoryControler {
       console.log(e);
     }
   }
+
+  async delete(req, res) {
+    try {
+      const response = await Historico.deleteMany({})
+      console.log(response);
+      return res.status(200).json(response)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 export default new HistoryControler();

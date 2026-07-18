@@ -37,10 +37,32 @@ class HomeController {
 
             await custumer.deleteOne();
 
-            res.status(200).json({ message: 'Cliente deletado com sucesso' });
+            return res.status(200).json({ message: 'Cliente deletado com sucesso' });
         } catch (e) {
             console.log(e);
         }
+    }
+
+    async update(req, res) {
+
+        const { id } = req.params;
+
+        if(!id) return res.status(400).json({message: 'id vazio'});
+
+        try {
+            const customer = await Fila.findById(id)
+
+            if(!customer) return res.status(400).json({message: 'Cliente não encontrado'});
+            
+            customer.name = req.body.name;
+            customer.accents = req.body.accents;
+            customer.phoneNumber = req.body.phoneNumber;
+            await customer.save();
+
+            return res.status(200).json({ message: 'Cliente Editado com sucesso' });
+        } catch (e) {
+            console.log(e)
+        } 
     }
 }
 

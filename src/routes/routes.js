@@ -12,10 +12,6 @@ import MetaController from '../controller/MetaController.js';
 
 const router = Router();
 
-//Home routes
-router.get('/', authMiddleware, homeController.index);
-router.post('/', authMiddleware, homeController.store)
-router.delete('/:id', authMiddleware, homeController.delete);
 
 //Regiser Routes
 router.post('/user/register', authMiddleware, registerController.store);
@@ -29,6 +25,13 @@ router.post('/send-mensage/:id', authMiddleware, SendMensageController.store)
 //Historico routes
 router.get('/history', authMiddleware, HistoryController.index);
 router.post('/history', authMiddleware, HistoryController.store);
+router.delete('/history', authMiddleware, HistoryController.delete)
+
+//Home routes
+router.get('/', authMiddleware, homeController.index);
+router.post('/', authMiddleware, homeController.store);
+router.delete('/:id', authMiddleware, homeController.delete);
+router.put('/:id', authMiddleware, homeController.update);
 
 //metaRoutes
 
