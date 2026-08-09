@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Fila from '../model/Fila.js';
 
-class SendMenssageController {
+class SendConfirmatioController {
     async store(req, res) {
         try {
             const id = req.params.id
@@ -17,19 +17,17 @@ class SendMenssageController {
             const config = {
                 headers: {
                     'Authorization': `Bearer ${whatssapAcessToken}`,
-                    'Content-Type': 'application/json' // C maiúsculo padrão
+                    'Content-Type': 'application/json'
                 }
             };
             const urlFinal = `${whatssapApiUrl}/${whatssapPhoneNumberID}/messages`
-
-            // await sendWhatsAppMessage(`55${numberReformed}`,`Olá ${custumer.name}, Ótima noticia!! \nTemos uma mesa disponivel para você🥳\n\nCorra🏃‍♂️💨 aguardaremos apenas 5 minutos para que reinvidique sua mesa, se indentifique para o garçom responsável pela fila e prepare o estômago para uma deliciosa refeição!🍔🍟`);
 
             const { data } = await axios.post(urlFinal, {
                 "messaging_product": "whatsapp",
                 "to": `55${numberReformed}`,
                 "type": "template",
                 "template": {
-                    "name": "west_fila_autorizado",
+                    "name": "confirmacao_fila",
                     "language": {
                         "code": "pt_BR"
                     },
@@ -39,6 +37,7 @@ class SendMenssageController {
                             "parameters": [
                                 {
                                     "type": "text",
+                                    "parameter_name": "name",
                                     "text": custumer.name
                                 }
                             ]
@@ -62,4 +61,4 @@ class SendMenssageController {
     }
 }
 
-export default new SendMenssageController();
+export default new SendConfirmatioController();

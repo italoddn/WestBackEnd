@@ -8,6 +8,7 @@ import loginController from "../controller/LoginController.js"
 import SendMensageController from "../controller/SendMensageController.js";
 import HistoryController from '../controller/HistoryController.js';
 import MetaController from '../controller/MetaController.js';
+import SendConfirmatioController from '../controller/SendConfirmatioController.js';
 
 
 const router = Router();
@@ -20,12 +21,13 @@ router.post('/user/register', authMiddleware, registerController.store);
 router.post('/user/login', loginController.store);
 
 //Send mensages Routes
-router.post('/send-mensage/:id', authMiddleware, SendMensageController.store)
+router.post('/send-mensage/:id', authMiddleware, SendMensageController.store);
+router.post('/send-mensage-confirmation/:id', authMiddleware, SendConfirmatioController.store);
 
 //Historico routes
 router.get('/history', authMiddleware, HistoryController.index);
 router.post('/history', authMiddleware, HistoryController.store);
-router.delete('/history', authMiddleware, HistoryController.delete)
+router.delete('/history', authMiddleware, HistoryController.delete);
 
 //Home routes
 router.get('/', authMiddleware, homeController.index);
